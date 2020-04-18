@@ -12,7 +12,7 @@ namespace GiGCodeChallenge.Common.Models
             carDetailsModel = new List<CarDetailsModel>();
         }
         public string topicName { get; set; }
-
+        public long  topicOffset { get; set; }
         public List<CarDetailsModel> carDetailsModel { get; set; }
 
     }
