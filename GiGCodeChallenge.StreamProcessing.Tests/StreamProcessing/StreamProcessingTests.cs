@@ -16,9 +16,9 @@ namespace GiGCodeChallenge.StreamProcessing.Tests
         [TestMethod]
         public void ProducerToConsumerMessagesTest()
         {
-            ProducerMessagesTest();
+          ProducerMessagesTest();
 
-            GetConsumerMessagesTest();
+          GetConsumerMessagesTest();
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace GiGCodeChallenge.StreamProcessing.Tests
         /// </summary>
         public void ProducerMessagesTest()
         {
+            topicModel.topicOffset = _producerServices.GetOffsetTopic(topicModel.topicName);
             var producerMessages = _producerServices.SendProducerMessages(topicModel);
-
-            producerMessages.ShouldBeEqual(topicModel.carDetailsModel.Count());
+            producerMessages.ShouldBeEqual((long)topicModel.carDetailsModel.Count());
         }
 
         /// <summary>
@@ -36,7 +36,8 @@ namespace GiGCodeChallenge.StreamProcessing.Tests
         /// </summary>
         public void GetConsumerMessagesTest()
         {
-            var consumerTopicModel = _consumerServices.GetConsumerMessages(topicModel.topicName);
+            var consumerTopicModel = _consumerServices.GetConsumerMessages(topicModel.topicName, 
+                            topicModel.carDetailsModel.Count(),topicModel.topicOffset);
 
             consumerTopicModel.ShouldBeEqualObj(topicModel);
         }

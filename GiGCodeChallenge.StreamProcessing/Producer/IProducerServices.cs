@@ -1,4 +1,5 @@
 ﻿using GiGCodeChallenge.Common.Models;
+using KafkaNet;
 
 namespace GiGCodeChallenge.StreamProcessing.Producers
 {
@@ -9,6 +10,14 @@ namespace GiGCodeChallenge.StreamProcessing.Producers
         /// </summary>
         /// <param name="topicModel"></param>
         /// <returns></returns>
-        int SendProducerMessages(TopicModel topicModel);
+        long SendProducerMessages(TopicModel topicModel);
+
+
+        /// <summary>
+        /// GetOffsetTopic
+        /// </summary>
+        /// <param name="topicName"></param>
+        /// <returns></returns>
+        long GetOffsetTopic( string topicName);
     }
 }

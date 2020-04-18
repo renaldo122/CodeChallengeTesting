@@ -8,7 +8,9 @@ namespace GiGCodeChallenge.StreamProcessing.Consumers
         ///Get messages from Consumer
         /// </summary>
         /// <param name="topicName"></param>
+        ///  <param name="topicOffset"></param>
+        ///   <param name="topicOffset"></param>
         /// <returns></returns>
-        TopicModel GetConsumerMessages(string topicName);
+        TopicModel GetConsumerMessages(string topicName, int topicCount,long topicOffset);
     }
 }
